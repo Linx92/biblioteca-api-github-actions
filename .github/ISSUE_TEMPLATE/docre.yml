@@ -1,8 +1,8 @@
 name: Solicitud de Documentacion
-descripcion: Solicita al agente la creacion o actualizacion de documentacion con PR automatico.
+description: Solicita al agente la creacion o actualizacion de documentacion con PR automatico.
 title: "[doc-request]"
 labels:
-  -doc-request
+  - doc-request
 body:
   - type: markdown
     attributes:
