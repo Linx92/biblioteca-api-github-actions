@@ -15,7 +15,7 @@ jobs:
   extract-version:
     runs-on: ubuntu-latest
     outputs:
-      app_version: ${{ steps.extract-version.outputs.version }}
+      app_version: ${{ steps.extract-version.outputs.VERSION }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -31,7 +31,8 @@ jobs:
     needs: extract-version
     steps:
       - name: Muestra version
-        run: echo "Version: ${{ needs.extract-version.outputs.app_version }}"
+        run: |
+          echo "Version: ${{ needs.extract-version.outputs.app_version }}"
       
       - name: Checkout code
         uses: actions/checkout@v7
