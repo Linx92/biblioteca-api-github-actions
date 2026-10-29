@@ -22,7 +22,7 @@ jobs:
       - name: Get version from changelog
         id: extract-version
         run: |
-          version=$(grep -oP '## \[\K[^\]]+' CHANGELOG.md)
+          version=$(grep -oPm1 '(?<=## \[)[^\]]+' CHANGELOG.md)
           echo "Extracted version: $VERSION"
           echo "version=$version" >> $GITHUB_OUTPUT
 
