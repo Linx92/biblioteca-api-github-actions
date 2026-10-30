@@ -5,7 +5,16 @@ on:
     branches:
       - main
       - develop
-  workflow_dispatch: {}
+  workflow_dispatch: 
+    inputs:
+      dotnetversion:
+        description: 'Version to build'
+        default: '9.0.x'
+        required: false
+      artifactname:
+        description: 'Artifact name'
+        default: 'app.package'
+        required: false
 
 permissions:
   id-token: write
@@ -40,7 +49,7 @@ jobs:
       - name: Install dotnet
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '9.0.x'
+          dotnet-version: ${{ github.event.inputs.dotnetversion || '9.0.x' }}
       
       - name: Restore
         run: dotnet restore
@@ -60,6 +69,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-package
-          path: app.zip
+          name: ${{ github.event.inputs.artifactname || 'app-package' }}
+          path: ${{ github.event.inputs.artifactname || 'app-package' }}.zip
           retention-days: 5
