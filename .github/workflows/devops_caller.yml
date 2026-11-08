@@ -5,7 +5,7 @@ on:
 
 jobs:
   ci:
-    uses: Linx92/github_actions_template/.github/workflows/devops-ci.yml@main
+    uses: Linx92/github_actions_template/.github/workflows/dotnet-ci.yml@main
     with:
       dotnetversion: '9.0.x'
       artifactname: 'app.package'
